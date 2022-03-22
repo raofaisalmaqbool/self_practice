@@ -3,7 +3,10 @@ from django.shortcuts import render, redirect, HttpResponse
 # Create your views here.
 
 def index(request):
-    return render(request, "index.html")
+    data = {
+        'heading0' : 'helow yahan djnago sy data html page pr ha raha ha'
+    }
+    return render(request, "index.html", data)
 
 def home(request):
     return HttpResponse("welcome to home")
