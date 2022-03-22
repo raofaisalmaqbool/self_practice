@@ -29,4 +29,8 @@ def coursedetails(request, productid):
 
 
 def base(request):
-    return render(request, 'base.html')
+    return render(request, "base.html")
+
+
+def about_us(request):
+    return render(request, "about_us.html")
