@@ -26,3 +26,7 @@ def courses(request):
 
 def coursedetails(request, productid):
     return HttpResponse(productid)
+
+
+def base(request):
+    return render(request, 'base.html')
