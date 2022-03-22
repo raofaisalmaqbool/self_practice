@@ -7,9 +7,9 @@
 <form method="post">
   {% csrf_token %}
   <label for="">value 1:</label><br>
-  <input type="text" name="num1"><br><br>
+  <input type="text" name="num1" value="{{n1}}"><br><br>
   <label for="">value 2:</label><br>
-  <input type="text" name="num2"><br><br>
+  <input type="text" name="num2" value="{{n2}}"><br><br>
 
   <button type="submit"> Save </button><br><br>
 

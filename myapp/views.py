@@ -36,8 +36,9 @@ def about_us(request):
     return render(request, "about_us.html")
 
 
-def contact_us(request):             #form sy data lana or osko print krwana secreen pr
+def contact_us(request, finalans=None):             #form sy data lana or osko print krwana secreen pr
     finalans=0
+    data = {}
     try:
         if request.method == "POST":
         #n1 = int(request.GET['num1'])
@@ -49,7 +50,13 @@ def contact_us(request):             #form sy data lana or osko print krwana sec
             n1 = int(request.POST.get('num1'))
             n2 = int(request.POST.get('num2'))
 
-        finalans= n1+n2
+            finalans= n1 + n2
+            data = {
+            'n1' : n1,
+            'n2' : n2,
+            'output' : finalans}
+
     except:
         pass
-    return render(request, "contact_us.html", {'output':finalans})
+    #return render(request, "contact_us.html", {'output':finalans})
+    return render(request, "contact_us.html", data)
