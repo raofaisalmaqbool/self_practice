@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect, HttpResponse
 
 def index(request):
     data = {
-        'heading0' : 'helow yahan djnago sy data html page pr ha raha ha',
+        'heading0': 'helow yahan djnago sy data html page pr ha raha ha',
         'clist': ['php', 'java', 'python', 'djanago'],
         'students': [
             {'name': 'ali', 'phone': '789475987'},
@@ -34,3 +34,18 @@ def base(request):
 
 def about_us(request):
     return render(request, "about_us.html")
+
+
+def contact_us(request):             #form sy data lana or osko print krwana secreen pr
+    finalans=0
+    try:
+        #n1 = int(request.GET['num1'])
+        #n2 = int(request.GET['num2'])
+
+        n1 = int(request.GET.get('num1'))
+        n2 = int(request.GET.get('num2'))
+
+        finalans= n1+n2
+    except:
+        pass
+    return render(request, "contact_us.html", {'output':finalans})
