@@ -39,11 +39,15 @@ def about_us(request):
 def contact_us(request):             #form sy data lana or osko print krwana secreen pr
     finalans=0
     try:
+        if request.method == "POST":
         #n1 = int(request.GET['num1'])
         #n2 = int(request.GET['num2'])
 
-        n1 = int(request.GET.get('num1'))
-        n2 = int(request.GET.get('num2'))
+            #n1 = int(request.GET.get('num1'))
+            #n2 = int(request.GET.get('num2'))
+
+            n1 = int(request.POST.get('num1'))
+            n2 = int(request.POST.get('num2'))
 
         finalans= n1+n2
     except:
