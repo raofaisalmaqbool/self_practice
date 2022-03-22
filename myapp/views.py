@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, HttpResponse
+from django.http import HttpResponseRedirect
 
 
 # Create your views here.
@@ -33,7 +34,10 @@ def base(request):
 
 
 def about_us(request):
-    return render(request, "about_us.html")
+    global output
+    if request.method == "GET":
+        output = request.GET.get('output')
+    return render(request, "about_us.html", {'output':output})
 
 
 def contact_us(request, finalans=None):             #form sy data lana or osko print krwana secreen pr
@@ -55,6 +59,12 @@ def contact_us(request, finalans=None):             #form sy data lana or osko p
             'n1' : n1,
             'n2' : n2,
             'output' : finalans}
+
+            #Mehthods for rediract
+            #return HttpResponseRedirect('/about_us/')
+            #return redirect('/about_us/')
+            url = "/about_us/?output={}".format(finalans)
+            return redirect(url)
 
     except:
         pass
