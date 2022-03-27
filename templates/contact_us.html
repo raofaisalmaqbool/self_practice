@@ -4,7 +4,7 @@
 <center>
 <h2>HTML Forms</h2>
 
-<form method="post">
+<form method="post" action="{% url 'submitform' %}">
   {% csrf_token %}
   <label for="">value 1:</label><br>
   <input type="text" name="num1" value="{{n1}}"><br><br>

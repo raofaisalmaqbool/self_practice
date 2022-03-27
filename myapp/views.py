@@ -70,3 +70,7 @@ def contact_us(request, finalans=None):             #form sy data lana or osko p
         pass
     #return render(request, "contact_us.html", {'output':finalans})
     return render(request, "contact_us.html", data)
+
+
+def submitform(request):
+    return HttpResponse(request)
