@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.http import HttpResponseRedirect
+from .forms import UserForms
 
 
 # Create your views here.
 
 def index(request):
+
     data = {
         'heading0': 'helow yahan djnago sy data html page pr ha raha ha',
         'clist': ['php', 'java', 'python', 'djanago'],
@@ -18,6 +20,7 @@ def index(request):
 
 
 def home(request):
+
     return HttpResponse("welcome to home")
 
 
@@ -42,7 +45,9 @@ def about_us(request):
 
 def contact_us(request, finalans=None):             #form sy data lana or osko print krwana secreen pr
     finalans=0
-    data = {}
+    variable1 = UserForms
+
+    data = {'form': variable1}
     try:
         if request.method == "POST":
         #n1 = int(request.GET['num1'])
@@ -58,6 +63,7 @@ def contact_us(request, finalans=None):             #form sy data lana or osko p
             data = {
             'n1' : n1,
             'n2' : n2,
+            'form' : variable1,
             'output' : finalans}
 
             #Mehthods for rediract
@@ -65,6 +71,7 @@ def contact_us(request, finalans=None):             #form sy data lana or osko p
             #return redirect('/about_us/')
             url = "/about_us/?output={}".format(finalans)
             return redirect(url)
+            #return render(request, "contact_us.html", data)
 
     except:
         pass
