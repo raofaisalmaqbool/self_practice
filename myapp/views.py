@@ -6,7 +6,6 @@ from .forms import UserForms
 # Create your views here.
 
 def index(request):
-
     data = {
         'heading0': 'helow yahan djnago sy data html page pr ha raha ha',
         'clist': ['php', 'java', 'python', 'djanago'],
@@ -20,7 +19,6 @@ def index(request):
 
 
 def home(request):
-
     return HttpResponse("welcome to home")
 
 
@@ -40,44 +38,72 @@ def about_us(request):
     global output
     if request.method == "GET":
         output = request.GET.get('output')
-    return render(request, "about_us.html", {'output':output})
+    return render(request, "about_us.html", {'output': output})
 
 
-def contact_us(request, finalans=None):             #form sy data lana or osko print krwana secreen pr
-    finalans=0
+def contact_us(request, finalans=None):  # form sy data lana or osko print krwana secreen pr
+    finalans = 0
     variable1 = UserForms
 
     data = {'form': variable1}
     try:
         if request.method == "POST":
-        #n1 = int(request.GET['num1'])
-        #n2 = int(request.GET['num2'])
+            # n1 = int(request.GET['num1'])
+            # n2 = int(request.GET['num2'])
 
-            #n1 = int(request.GET.get('num1'))
-            #n2 = int(request.GET.get('num2'))
+            # n1 = int(request.GET.get('num1'))
+            # n2 = int(request.GET.get('num2'))
 
             n1 = int(request.POST.get('num1'))
             n2 = int(request.POST.get('num2'))
 
-            finalans= n1 + n2
+            finalans = n1 + n2
             data = {
-            'n1' : n1,
-            'n2' : n2,
-            'form' : variable1,
-            'output' : finalans}
+                'n1': n1,
+                'n2': n2,
+                'form': variable1,
+                'output': finalans}
 
-            #Mehthods for rediract
-            #return HttpResponseRedirect('/about_us/')
-            #return redirect('/about_us/')
+            # Mehthods for rediract
+            # return HttpResponseRedirect('/about_us/')
+            # return redirect('/about_us/')
             url = "/about_us/?output={}".format(finalans)
             return redirect(url)
-            #return render(request, "contact_us.html", data)
+            # return render(request, "contact_us.html", data)
 
     except:
         pass
-    #return render(request, "contact_us.html", {'output':finalans})
+    # return render(request, "contact_us.html", {'output':finalans})
     return render(request, "contact_us.html", data)
 
 
 def submitform(request):
     return HttpResponse(request)
+
+
+def calculator(request):
+    context = {}
+    try:
+        if request.method == "POST":
+            value1 = eval(request.POST.get('num1'))
+            value2 = eval(request.POST.get('num2'))
+            operator = request.POST.get('opr')
+            if operator == '+':
+                output = value1 + value2
+            elif operator == '-':
+                output = value1 - value2
+            elif operator == '*':
+                output = value1 * value2
+            elif operator == '/':
+                output = value1 / value2
+
+            context = {
+                'value1': value1,
+                'value2': value2,
+                'output': output
+            }
+
+    except:
+        output = "something is wrong!"
+
+    return render(request, 'calculator.html', context)
