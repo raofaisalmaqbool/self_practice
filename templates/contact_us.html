@@ -2,19 +2,22 @@
 {% extends 'base.html' %}
 {% block content %}
 <center>
-<h2>HTML Forms</h2>
+<h1>Form with HTML</h1><br><br>
 
-<form method="post" action="{% url 'submitform' %}">
+<form method="post" action="{% url 'courses' %}">
   {% csrf_token %}
   <label for="">value 1:</label><br>
-  <input type="text" name="num1" value="{{n1}}"><br><br>
+  <input type="text" name="num1" value="{{n1}}" required><br><br>
   <label for="">value 2:</label><br>
-  <input type="text" name="num2" value="{{n2}}"><br><br>
+  <input type="text" name="num2" value="{{n2}}" required><br><br>
 
-  <button type="submit"> Save </button><br><br>
+  <h1>Form with django forms model</h1><br><br>
+  {{form}}
+
+  <br><br><br><button type="submit"> Save </button><br><br>
 
   <label for="">Output</label><br>
   <input type="text" value="{{output}}"><br><br>
-  {{form}}
+
 </form></center>
 {% endblock %}

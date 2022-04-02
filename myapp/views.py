@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.http import HttpResponseRedirect
 from .forms import UserForms
+from http.client import HTTPResponse
+from urllib import request
 
 
 # Create your views here.
@@ -41,7 +43,7 @@ def about_us(request):
     return render(request, "about_us.html", {'output': output})
 
 
-def contact_us(request, finalans=None):  # form sy data lana or osko print krwana secreen pr
+def contact_us(request):  # form sy data lana or osko print krwana secreen pr
     finalans = 0
     variable1 = UserForms
 
@@ -61,7 +63,7 @@ def contact_us(request, finalans=None):  # form sy data lana or osko print krwan
             data = {
                 'n1': n1,
                 'n2': n2,
-                'form': variable1,
+                'form': variable1,  # form model waly ky liya
                 'output': finalans}
 
             # Mehthods for rediract
@@ -83,6 +85,7 @@ def submitform(request):
 
 def calculator(request):
     context = {}
+    output = None
     try:
         if request.method == "POST":
             value1 = eval(request.POST.get('num1'))
@@ -107,3 +110,23 @@ def calculator(request):
         output = "something is wrong!"
 
     return render(request, 'calculator.html', context)
+
+
+def even_odd(request):
+    context ={}
+    if request.method == "POST":
+        if request.POST.get('num1') == "":
+            return render(request, 'even_odd.html', {'error':True})
+
+        n1 = eval(request.POST.get('num1'))
+
+        n2 = n1*n1
+
+        even_odd_var = UserForms
+        context = {
+            'n1': n1,
+            'n2' : n2,
+            'even_odd_var': even_odd_var
+        }
+        return render(request, 'even_odd.html', context)
+    return render(request, 'even_odd.html')

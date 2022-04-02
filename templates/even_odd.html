@@ -1,0 +1,28 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<center>
+
+<form method="post">
+  {% csrf_token %}
+
+<!--  <h1>Form with django forms model</h1><br><br>-->
+<!--  {{even_odd_var}}-->
+
+  <h1>Form with HTML</h1><br><br>
+  {% if error %}
+  <div class="alert alert-danger" role="alert">
+    Please Enter Value
+  </div>
+  {% endif %}
+
+  <label for="">value 1:</label><br>
+  <input type="text" name="num1" value="{{n1}}"><br><br>
+
+  <br><br><br><button type="submit"> Save </button><br><br>
+
+  <label for="">Output</label><br>
+  <input type="text" value="{{n2}}"><br><br>
+
+</form></center>
+{% endblock %}
