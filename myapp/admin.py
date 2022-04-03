@@ -8,7 +8,7 @@ from myapp.models import *
 class ServiceAdmin(admin.ModelAdmin):
     # this will dispaly this list as a table in penal
     # list_display is neccessory write same word as it is
-    list_display = ('service_icon', 'service_title', 'service_des')
+    list_display = ('service_icon', 'service_title', 'service_des', 'extra_text')
 
 
 admin.site.register(Service, ServiceAdmin)
