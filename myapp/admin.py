@@ -11,4 +11,9 @@ class ServiceAdmin(admin.ModelAdmin):
     list_display = ('service_icon', 'service_title', 'service_des', 'extra_text')
 
 
+class NewsService(admin.ModelAdmin):
+    list_display = ('news_title', 'more_info')
+
+
 admin.site.register(Service, ServiceAdmin)
+admin.site.register(News, NewsService)

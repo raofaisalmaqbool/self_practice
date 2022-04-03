@@ -8,3 +8,8 @@ class Service(models.Model):
     service_title=models.CharField(max_length=80)
     service_des=models.TextField()
     extra_text = HTMLField(null=True)
+
+
+class News(models.Model):
+    news_title=models.CharField(max_length=50)
+    more_info = HTMLField()

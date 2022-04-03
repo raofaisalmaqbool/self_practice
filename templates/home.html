@@ -33,13 +33,25 @@
 .card button:hover {
   opacity: 0.7;
 }
+marquee {
+  background-color:gray;
+  height:50px;
+  line-height:50px;
+  color:white;
+  font-size: 20px;
+  }
 
 </style>
 </head>
 <body>
 
-{% for i in service_data %}
+<marquee>
+  {% for i in news_data %}
+  <a href=""><b>{{i.news_title}}</b></a> &nbsp; &nbsp; &nbsp; &nbsp;
+  {% endfor %}
+</marquee>
 
+{% for i in service_data %}
 <div class="card">
   <h1>{{i.service_icon}}</h1>
   <p class="price">{{i.service_title}}</p>
