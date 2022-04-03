@@ -1,0 +1,15 @@
+{% include 'includes/header.html' %}
+{% block content %}
+
+<center>
+<h1>{{news_detail.news_title}}</h1><br><br>
+{{news_detail.more_info | safe }}
+</center>
+
+{% endblock %}
+{% include 'includes/footer.html' %}
+
+
+
+
+

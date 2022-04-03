@@ -45,9 +45,9 @@ marquee {
 </head>
 <body>
 
-<marquee>
+<marquee onmouseover="stop()" onmouseout="start()">
   {% for i in news_data %}
-  <a href=""><b>{{i.news_title}}</b></a> &nbsp; &nbsp; &nbsp; &nbsp;
+  <a href="{% url 'newsdetails' i.id %}"><b>{{i.news_title}}</b></a> &nbsp; &nbsp; &nbsp; &nbsp;
   {% endfor %}
 </marquee>
 

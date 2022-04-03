@@ -143,3 +143,12 @@ def even_odd(request):
         }
         return render(request, 'even_odd.html', context)
     return render(request, 'even_odd.html')
+
+
+def newsdetails(request, newsid):
+    news_detail = News.objects.get(id=newsid)
+    # print(newsid)
+    context ={
+        'news_detail' : news_detail
+    }
+    return render(request, 'newsdetails.html', context)
