@@ -24,7 +24,7 @@ def index(request):
 def home(request):
     # assending and descending by id and service_title,,, by alphabet and number(id)
     # service_data = Service.objects.all().order_by('-service_title')
-    service_data = Service.objects.all().order_by('-id')
+    service_data = Service.objects.all().order_by('-id')[1:4]  # negitive index not supported
 
     # for i in service_data:            # console per data print karwany ky liya
     #     print(i.service_title)
