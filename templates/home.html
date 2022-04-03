@@ -33,6 +33,7 @@
 .card button:hover {
   opacity: 0.7;
 }
+
 </style>
 </head>
 <body>
@@ -42,7 +43,7 @@
 <div class="card">
   <h1>{{i.service_icon}}</h1>
   <p class="price">{{i.service_title}}</p>
-  <p>{{i.service_des}}</p>
+  <p>{{i.service_des | title | safe }}</p>
   <p><button>Add to Cart</button></p>
 </div>
 {% endfor %}
