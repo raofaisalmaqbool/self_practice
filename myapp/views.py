@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.http import HttpResponseRedirect
 from .forms import UserForms
+from myapp.models import *
 from http.client import HTTPResponse
 from urllib import request
 
@@ -21,7 +22,13 @@ def index(request):
 
 
 def home(request):
-    return HttpResponse("welcome to home")
+    service_data = Service.objects.all()
+    # for i in service_data:            # console per data print karwany ky liya
+    #     print(i.service_title)
+    context ={
+        'service_data' : service_data
+    }
+    return render(request, "home.html", context)
 
 
 def courses(request):
