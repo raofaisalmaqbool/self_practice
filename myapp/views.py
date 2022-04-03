@@ -27,12 +27,20 @@ def home(request):
     service_data = Service.objects.all().order_by('-id')[1:4]  # negitive index not supported
     news_data = News.objects.all()
 
+# how does filter work start
+    if request.method == "GET":
+        var = request.GET.get('searchwith')
+        if var is not None:
+            # service_data = Service.objects.filter(service_title=var)
+            service_data = Service.objects.filter(service_title__icontains=var)
+# filter work end
+
     # for i in service_data:            # console per data print karwany ky liya
     #     print(i.service_title)
 
-    context ={
-        'service_data' : service_data,
-        'news_data' : news_data
+    context = {
+        'service_data': service_data,
+        'news_data': news_data
     }
     return render(request, "home.html", context)
 
@@ -126,19 +134,19 @@ def calculator(request):
 
 
 def even_odd(request):
-    context ={}
+    context = {}
     if request.method == "POST":
         if request.POST.get('num1') == "":
-            return render(request, 'even_odd.html', {'error':True})
+            return render(request, 'even_odd.html', {'error': True})
 
         n1 = eval(request.POST.get('num1'))
 
-        n2 = n1*n1
+        n2 = n1 * n1
 
         even_odd_var = UserForms
         context = {
             'n1': n1,
-            'n2' : n2,
+            'n2': n2,
             'even_odd_var': even_odd_var
         }
         return render(request, 'even_odd.html', context)
@@ -148,7 +156,7 @@ def even_odd(request):
 def newsdetails(request, newsid):
     news_detail = News.objects.get(id=newsid)
     # print(newsid)
-    context ={
-        'news_detail' : news_detail
+    context = {
+        'news_detail': news_detail
     }
     return render(request, 'newsdetails.html', context)

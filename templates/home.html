@@ -51,6 +51,13 @@ marquee {
   {% endfor %}
 </marquee>
 
+<center>
+<form method="get">
+  <input type="text" name="searchwith" value=""/>
+  <input type="submit" name="Search"/>
+</form>
+  </center>
+
 {% for i in service_data %}
 <div class="card">
   <h1>{{i.service_icon}}</h1>
@@ -59,6 +66,8 @@ marquee {
   <p>{{i.extra_text | safe}}</p>
   <p><button>Add to Cart</button></p>
 </div>
+{% empty %}
+not data found
 {% endfor %}
 
 </body>
