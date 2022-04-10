@@ -153,8 +153,8 @@ def even_odd(request):
     return render(request, 'even_odd.html')
 
 
-def newsdetails(request, newsid):
-    news_detail = News.objects.get(id=newsid)
+def newsdetails(request, slug):   # should be slug keyword as argument
+    news_detail = News.objects.get(news_slug=slug)
     # print(newsid)
     context = {
         'news_detail': news_detail
